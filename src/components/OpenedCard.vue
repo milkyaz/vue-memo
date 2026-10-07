@@ -6,12 +6,7 @@ const { order, memoText } = defineProps({
   memoText: String,
   label: String
 })
-const isMark = ref(false);
-const isCheck = ref(true);
 const otherMemoText = "Яблоко";
-const res = otherMemoText === memoText;
-const emit = defineEmits(['result'])
-const isResultCard = ref(false);
 
 function handleOrder() {
   let counterNum = Number(order) + 1;
@@ -19,13 +14,6 @@ function handleOrder() {
   return numToStr.length > 1 ? numToStr : numToStr.padStart(numToStr.length + 1, '0')
 }
 
-function handleMark() {
-  return emit('result',isMark.value === res, handleOrder(), isResultCard.value = true);
-}
-
-function handleCheck() {
-  return emit('result', isCheck.value === res, handleOrder(), isResultCard.value = true);
-}
 
 </script>
 
@@ -35,8 +23,8 @@ function handleCheck() {
       <p class="opened-card__inner-order">{{ handleOrder() }}</p>
       <p class="opened-card__inner-text">{{ otherMemoText }}</p>
       <p class="opened-card__inner-label">
-        <img style="  cursor: pointer;" src="./icon/mark-opened-icon.svg" alt="check" width="24" @click="handleMark">
-        <img style="  cursor: pointer;" src="./icon/check-opened-icon.svg" alt="check" width="24" @click="handleCheck">
+        <img style="  cursor: pointer;" src="./icon/mark-opened-icon.svg" alt="check" width="24">
+        <img style="  cursor: pointer;" src="./icon/check-opened-icon.svg" alt="check" width="24">
       </p>
     </div>
   </div>
