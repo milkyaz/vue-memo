@@ -5,30 +5,21 @@ import ClosedCard from "./ClosedCard.vue";
 import {ref} from "vue";
 import ResultCard from "./ResultCard.vue";
 
-const isSelector = ref(true);
-const orderCard = ref('');
-const memoTextCard = ref('');
-const result = ref(false);
-const isResultCard = ref(false);
-const orderCardResult = ref('')
+const cards = ref([
+  { word: 'car', translation: 'машина', state: 'closed', status: 'pending' },
+  { word: 'apple', translation: 'яблоко', state: 'closed', status: 'pending' },
+])
 
-function handleClick(order, memoText) {
-  orderCard.value += order;
-  memoTextCard.value = memoText;
-  isSelector.value = false;
-}
-
-function handleResult(res, order, isResultCardVal) {
-  result.value = res;
-  orderCardResult.value = order;
-  isResultCard.value = isResultCardVal;
+function getComponent(card) {
+  if (card.state === 'closed') return ClosedCard
+  return card.status === 'pending' ? OpenedCard : ResultCard
 }
 </script>
 
 <template>
-  <ClosedCard v-if="isSelector" @opened="handleClick" order="06" memo-text="car" label="ПЕРЕВЕРНУТЬ"/>
-  <OpenedCard v-else-if="!isResultCard" :order="orderCard" :memo-text="memoTextCard" @result="handleResult"/>
-  <ResultCard v-else :order="orderCardResult" :res="result"/>
+  <div  v-for="(card, i) in cards" :key="i">
+    <component :is="getComponent(card)" order="06" :memo-text="card.word" label="ПЕРЕВЕРНУТЬ" />
+  </div>
 </template>
 
 <style scoped>
