@@ -2,7 +2,7 @@
 
 const {order, res, resultText} = defineProps({
   order: String,
-  res: Boolean
+  res: Boolean,
   resultText: String
 })
 

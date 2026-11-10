@@ -8,7 +8,7 @@ const { order, closeText, label } = defineProps({
 const emit = defineEmits(['opened']);
 
 function clickCard() {
-  emit('opened', order, memoText)
+  emit('opened', order, closeText)
 }
 </script>
 
