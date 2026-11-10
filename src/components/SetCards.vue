@@ -19,7 +19,13 @@ function getComponent(card) {
 
 <template>
   <div  v-for="(card, i) in cards" :key="card.id">
-    <component :is="getComponent(card)" order="06" :memo-text="card.word" label="ПЕРЕВЕРНУТЬ" />
+    <component
+        :is="getComponent(card)"
+        :close-text="card.word"
+        :open-text="card.translation"
+        :result-text="card.translation"
+        order="06"
+        label="ПЕРЕВЕРНУТЬ" />
   </div>
 </template>
 

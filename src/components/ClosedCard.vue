@@ -1,14 +1,14 @@
 <script setup>
-const { order, memoText, label } = defineProps({
+const { order, closeText, label } = defineProps({
   order: String,
-  memoText: String,
+  closeText: String,
   label: String
 })
 
 const emit = defineEmits(['opened']);
 
 function clickCard() {
-  emit('opened', order, memoText)
+  emit('opened', order, closeText)
 }
 </script>
 
@@ -16,7 +16,7 @@ function clickCard() {
 <div class="closed-card" @click="clickCard">
   <div class="closed-card__inner">
     <p class="closed-card__inner-order">{{ order }}</p>
-    <p class="closed-card__inner-text">{{ memoText }}</p>
+    <p class="closed-card__inner-text">{{ closeText }}</p>
     <p class="closed-card__inner-label">{{ label }}</p>
   </div>
 </div>
