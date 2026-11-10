@@ -6,9 +6,9 @@ import {ref} from "vue";
 import ResultCard from "./ResultCard.vue";
 
 const cards = ref([
-  { word: 'car', translation: 'машина', state: 'closed', status: 'pending' },
-  { word: 'apple', translation: 'яблоко', state: 'opened', status: 'pending' },
-  { word: 'apple', translation: 'яблоко', state: 'opened', status: 'res' },
+  {word: 'car', translation: 'машина', state: 'closed', status: 'pending', id: crypto.randomUUID()},
+  {word: 'apple', translation: 'яблоко', state: 'opened', status: 'pending', id: crypto.randomUUID()},
+  {word: 'fear', translation: 'страх', state: 'opened', status: 'res', id: crypto.randomUUID()},
 ])
 
 function getComponent(card) {
@@ -18,7 +18,7 @@ function getComponent(card) {
 </script>
 
 <template>
-  <div  v-for="(card, i) in cards" :key="i">
+  <div  v-for="(card, i) in cards" :key="card.id">
     <component :is="getComponent(card)" order="06" :memo-text="card.word" label="ПЕРЕВЕРНУТЬ" />
   </div>
 </template>
