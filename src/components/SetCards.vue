@@ -25,7 +25,6 @@ function getComponent(card) {
         :open-text="card.translation"
         :result-text="card.translation"
         order="06"
-        :memo-text="card.word"
         label="ПЕРЕВЕРНУТЬ" />
   </div>
 </template>
