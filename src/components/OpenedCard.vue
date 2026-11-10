@@ -1,12 +1,11 @@
 <script setup>
 import {ref} from "vue";
 
-const { order, memoText } = defineProps({
+const { order, openText } = defineProps({
   order: String,
-  memoText: String,
+  openText: String,
   label: String
 })
-const otherMemoText = "Яблоко";
 
 function handleOrder() {
   let counterNum = Number(order) + 1;
@@ -21,7 +20,7 @@ function handleOrder() {
   <div class="opened-card">
     <div class="opened-card__inner">
       <p class="opened-card__inner-order">{{ handleOrder() }}</p>
-      <p class="opened-card__inner-text">{{ otherMemoText }}</p>
+      <p class="opened-card__inner-text">{{ openText }}</p>
       <p class="opened-card__inner-label">
         <img style="  cursor: pointer;" src="./icon/mark-opened-icon.svg" alt="check" width="24">
         <img style="  cursor: pointer;" src="./icon/check-opened-icon.svg" alt="check" width="24">

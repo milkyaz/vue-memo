@@ -1,8 +1,9 @@
 <script setup>
 
-const {order, res} = defineProps({
+const {order, res, resultText} = defineProps({
   order: String,
   res: Boolean
+  resultText: String
 })
 
 
@@ -23,7 +24,7 @@ function handleOrder() {
         <img v-else src="./icon/res-mark-icon.svg" alt="res-icon"/>
       </p>
       <p class="result-card__inner-order">{{ handleOrder() }}</p>
-      <p class="result-card__inner-text">Автомобиль</p>
+      <p class="result-card__inner-text">{{ resultText }}</p>
       <p class="result-card__inner-label">Завершено</p>
     </div>
   </div>
