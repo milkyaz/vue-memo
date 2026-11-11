@@ -17,11 +17,8 @@ function getComponent(card) {
 }
 
 function handleState(id) {
-  cards.value.filter(el => {
-    if (el.id === id) {
-      el.state = 'opened';
-    }
-  })
+  const card = cards.value.find(el => el.id === id)
+  card ? card.state = 'opened' : '';
 }
 </script>
 

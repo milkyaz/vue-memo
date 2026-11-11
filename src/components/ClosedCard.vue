@@ -1,10 +1,8 @@
 <script setup>
-import {ref} from "vue";
-const { order, closeText, label, state, id } = defineProps({
+const { order, closeText, label, id } = defineProps({
   order: String,
   closeText: String,
   label: String,
-  state: String,
   id: String
 })
 
