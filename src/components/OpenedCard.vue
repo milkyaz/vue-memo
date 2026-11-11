@@ -1,9 +1,10 @@
 <script setup>
 
-const { order, openText } = defineProps({
+const { order, openText, id } = defineProps({
   order: String,
   openText: String,
-  label: String
+  label: String,
+  id: String
 })
 
 function handleOrder() {
@@ -12,11 +13,15 @@ function handleOrder() {
   return numToStr.length > 1 ? numToStr : numToStr.padStart(numToStr.length + 1, '0')
 }
 
+const emit = defineEmits(['open-state']);
 
+function clickCard() {
+  emit('open-state',  id)
+}
 </script>
 
 <template>
-  <div class="opened-card">
+  <div class="opened-card" @click="clickCard">
     <div class="opened-card__inner">
       <p class="opened-card__inner-order">{{ handleOrder() }}</p>
       <p class="opened-card__inner-text">{{ openText }}</p>

@@ -1,14 +1,17 @@
 <script setup>
-const { order, closeText, label } = defineProps({
+import {ref} from "vue";
+const { order, closeText, label, state, id } = defineProps({
   order: String,
   closeText: String,
-  label: String
+  label: String,
+  state: String,
+  id: String
 })
 
-const emit = defineEmits(['opened']);
+const emit = defineEmits(['close-state']);
 
 function clickCard() {
-  emit('opened', order, closeText)
+  emit('close-state',  id)
 }
 </script>
 
