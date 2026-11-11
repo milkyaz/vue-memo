@@ -1,9 +1,10 @@
 <script setup>
 
-const { order, openText } = defineProps({
+const { order, openText, id } = defineProps({
   order: String,
   openText: String,
-  label: String
+  label: String,
+  id: String
 })
 
 function handleOrder() {
@@ -11,7 +12,6 @@ function handleOrder() {
   let numToStr = counterNum.toString();
   return numToStr.length > 1 ? numToStr : numToStr.padStart(numToStr.length + 1, '0')
 }
-
 
 </script>
 

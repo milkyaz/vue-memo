@@ -1,14 +1,15 @@
 <script setup>
-const { order, closeText, label } = defineProps({
+const { order, closeText, label, id } = defineProps({
   order: String,
   closeText: String,
-  label: String
+  label: String,
+  id: String
 })
 
-const emit = defineEmits(['opened']);
+const emit = defineEmits(['close-state']);
 
 function clickCard() {
-  emit('opened', order, closeText)
+  emit('close-state',  id)
 }
 </script>
 
