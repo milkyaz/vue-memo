@@ -18,7 +18,7 @@ function getComponent(card) {
 
 function handleState(id) {
   const card = cards.value.find(el => el.id === id)
-  card ? card.state = 'opened' : '';
+  if (card) card.state = 'opened'
 }
 </script>
 
