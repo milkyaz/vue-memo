@@ -1,11 +1,12 @@
 <script setup>
 
-const { order, openText, id } = defineProps({
+const {order, openText, id} = defineProps({
   order: String,
   openText: String,
   label: String,
   id: String
 })
+const emit = defineEmits(['submit-selection']);
 
 function handleOrder() {
   let counterNum = Number(order) + 1;
@@ -13,6 +14,13 @@ function handleOrder() {
   return numToStr.length > 1 ? numToStr : numToStr.padStart(numToStr.length + 1, '0')
 }
 
+function handleMark() {
+  emit('submit-selection', id, 'mark');
+}
+
+function handleCheck() {
+  emit('submit-selection', id, 'check');
+}
 </script>
 
 <template>
@@ -21,8 +29,8 @@ function handleOrder() {
       <p class="opened-card__inner-order">{{ handleOrder() }}</p>
       <p class="opened-card__inner-text">{{ openText }}</p>
       <p class="opened-card__inner-label">
-        <img style="  cursor: pointer;" src="./icon/mark-opened-icon.svg" alt="check" width="24">
-        <img style="  cursor: pointer;" src="./icon/check-opened-icon.svg" alt="check" width="24">
+        <img @click="handleMark" style="  cursor: pointer;" src="./icon/mark-opened-icon.svg" alt="check" width="24">
+        <img @click="handleCheck" style="  cursor: pointer;" src="./icon/check-opened-icon.svg" alt="check" width="24">
       </p>
     </div>
   </div>

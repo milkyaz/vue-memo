@@ -11,6 +11,8 @@ const cards = ref([
   {word: 'fear', translation: 'страх', state: 'opened', status: 'res', id: crypto.randomUUID()},
 ])
 
+const variantOption = ref('');
+
 function getComponent(card) {
   if (card.state === 'closed') return ClosedCard
   return card.status === 'pending' ? OpenedCard : ResultCard
@@ -19,6 +21,12 @@ function getComponent(card) {
 function handleState(id) {
   const card = cards.value.find(el => el.id === id)
   if (card) card.state = 'opened'
+}
+
+function handleStatus(id, variant) {
+  const card = cards.value.find(el => el.id === id)
+  variantOption.value = variant;
+  if (card) card.status = 'res'
 }
 </script>
 
@@ -31,7 +39,9 @@ function handleState(id) {
         :result-text="card.translation"
         :state="card.state"
         :id="card.id"
+        :variant="variantOption"
         @close-state="handleState"
+        @submit-selection="handleStatus"
         order="06"
         label="ПЕРЕВЕРНУТЬ"/>
   </div>
