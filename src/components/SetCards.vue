@@ -7,8 +7,8 @@ import ResultCard from "./ResultCard.vue";
 
 const cards = ref([
   {word: 'car', translation: 'машина', state: 'closed', status: 'pending', id: crypto.randomUUID(), variant: ''},
-  {word: 'apple', translation: 'яблоко', state: 'opened', status: 'pending', id: crypto.randomUUID(), variant: ''},
-  {word: 'fear', translation: 'страх', state: 'opened', status: 'res', id: crypto.randomUUID(), variant: ''},
+  {word: 'apple', translation: 'яблоко', state: 'closed', status: 'pending', id: crypto.randomUUID(), variant: ''},
+  {word: 'fear', translation: 'страх', state: 'closed', status: 'pending', id: crypto.randomUUID(), variant: ''},
 ])
 
 function getComponent(card) {
