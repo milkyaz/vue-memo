@@ -6,9 +6,9 @@ import {ref} from "vue";
 import ResultCard from "./ResultCard.vue";
 
 const cards = ref([
-  {word: 'car', translation: 'машина', state: 'closed', status: 'pending', id: crypto.randomUUID()},
-  {word: 'apple', translation: 'яблоко', state: 'opened', status: 'pending', id: crypto.randomUUID()},
-  {word: 'fear', translation: 'страх', state: 'opened', status: 'res', id: crypto.randomUUID()},
+  {word: 'car', translation: 'машина', state: 'closed', status: 'pending', id: crypto.randomUUID(), variant: ''},
+  {word: 'apple', translation: 'яблоко', state: 'opened', status: 'pending', id: crypto.randomUUID(), variant: ''},
+  {word: 'fear', translation: 'страх', state: 'opened', status: 'res', id: crypto.randomUUID(), variant: ''},
 ])
 
 function getComponent(card) {
@@ -19,6 +19,15 @@ function getComponent(card) {
 function handleState(id) {
   const card = cards.value.find(el => el.id === id)
   if (card) card.state = 'opened'
+}
+
+function handleStatus(id, variant) {
+  const card = cards.value.find(el => el.id === id)
+
+  if (card) {
+    card.status = 'res';
+    card.variant = variant;
+  }
 }
 </script>
 
@@ -31,7 +40,9 @@ function handleState(id) {
         :result-text="card.translation"
         :state="card.state"
         :id="card.id"
+        :variant="card.variant"
         @close-state="handleState"
+        @submit-selection="handleStatus"
         order="06"
         label="ПЕРЕВЕРНУТЬ"/>
   </div>
